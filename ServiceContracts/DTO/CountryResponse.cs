@@ -12,18 +12,19 @@ namespace ServiceContracts.DTO
     {
         public Guid CountryId { get; set; }
         public string? CountryName { get; set; }
-    }
 
-    public static class CountryExtensions
-    {
-        public static CountryResponse ToCountryResponse(this Country country)
+    }
+        public static class CountryExtensions
         {
-            return new CountryResponse()
-            { 
-                CountryId = country.CountryId,
-                CountryName = country.CountryName
-            };
+            public static CountryResponse ToCountryResponse(this Country country)
+            {
+                return new CountryResponse()
+                {
+                    CountryId = country.CountryId,
+                    CountryName = country.CountryName
+                };
 
+            }
         }
-    }
+    
 }
