@@ -36,7 +36,7 @@ namespace Services
             Country country = countryAddRequest.ToCountry();
 
             //generate CountryId
-            country.CountryId = new Guid();
+            country.CountryId = Guid.NewGuid();
 
             //finally add to the list
             _countries.Add(country);
@@ -44,10 +44,9 @@ namespace Services
             return country.ToCountryResponse();
         }
 
-
-
-
-
-       
+        public List<CountryResponse> GetAllCountries()
+        {
+            return _countries.Select(country => country.ToCountryResponse()).ToList();
+        }
     }
 }
