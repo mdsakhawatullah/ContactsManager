@@ -126,6 +126,35 @@ namespace Test
         #endregion
 
         #region GetCountryByCountryId
+        //if CountryId is NULL, should return NULL as CountryResponse
+        [Fact]
+        public void GetCountryByCountryId_NullCountryId()
+        {
+            //arrange
+            Guid? countryId = null;
+
+            //act
+            CountryResponse? countryResponseFromService = _countriesService.GetCountryByCountryId(countryId);
+
+            //assert
+            Assert.Null(countryResponseFromService);
+        }
+
+        //if supply valid CountryId, should return matching CountryDetails
+        [Fact]
+        public void GetCountryByCountryId_ValidCountryId()
+        {
+            //arrange
+            CountryAddRequest? countryAddRequest = new CountryAddRequest() { CountryName = "Bangladesh" };
+            CountryResponse? countryResponseFromAdd = _countriesService.AddCountry(countryAddRequest);
+
+            //act
+            CountryResponse? countryResponseFromGet = _countriesService.GetCountryByCountryId(countryResponseFromAdd.CountryId);
+
+            //assert
+            Assert.Equal(countryResponseFromAdd, countryResponseFromGet);
+
+        }
 
         #endregion
 
