@@ -12,6 +12,7 @@ namespace Services
         public CountriesService()
         {
             _countries = new List<Country>();
+
         }
 
         public CountryResponse AddCountry(CountryAddRequest? countryAddRequest)
