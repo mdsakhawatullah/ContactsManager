@@ -24,6 +24,34 @@ namespace ServiceContracts.DTO
         public bool ReceiveNewsLetters { get; set; }
         public double? Age { get; set; }
 
+        /// <summary>
+        /// Compares the current object data with the parameter object
+        /// </summary>
+        /// <param name="obj">The PersonResponse Object to compare</param>
+        /// <returns>True or false, indicating whether all person details are matched with the specified parameter object</returns>
+        public override bool Equals(object? obj)
+        {
+            if (obj == null) return false;
+
+            if (obj.GetType() != typeof(PersonResponse)) return false;
+
+            PersonResponse person = (PersonResponse)obj;
+            return PersonID == person.PersonID && PersonName == person.PersonName && Email == person.Email && DateOfBirth == person.DateOfBirth && Gender == person.Gender && CountryID == person.CountryID && Address == person.Address && ReceiveNewsLetters == person.ReceiveNewsLetters;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return $"Person ID: {PersonID}, Person Name: {PersonName}," +
+                $" Email: {Email}, Date of Birth: {DateOfBirth?.ToString("dd MMM yyyy")}," +
+                $" Gender: {Gender}, Country ID: {CountryID}, Country: {Country}, Address: {Address}," +
+                $" Receive News Letters: {ReceiveNewsLetters}";
+        }
+
     }
     public static class PersonExtensions
     {
