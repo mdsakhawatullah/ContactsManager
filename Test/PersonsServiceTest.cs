@@ -215,7 +215,14 @@ namespace Test
     #endregion
 
     #region GetSortedPersons
-    
+
+    #endregion
+
+    #region UpdatePerson
+    #endregion
+
+    #region DeletePerson
+
     #endregion
 
 

@@ -214,5 +214,26 @@ namespace Services
 
             return matchingPerson.ToPersonResponse();
         }
+
+        public PersonResponse UpdatePerson(PersonAddRequest personUpdateRequest)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeletePerson(Guid? personID)
+        {
+            if (personID == null)
+                throw new ArgumentNullException(nameof(personID));
+
+            Person? person = _persons.FirstOrDefault(temp => temp.PersonID == personID);
+
+            if (person == null)
+                return false;
+
+            _persons.Remove(person);
+
+            return true;
+
+        }
     }
 }
