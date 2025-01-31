@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Microsoft.Extensions.Logging;
 using ServiceContracts;
 using ServiceContracts.DTO;
 using ServiceContracts.DTO.Enums;
@@ -16,6 +17,7 @@ namespace Services
     {
         private readonly List<Person> _persons;
         private readonly ICountriesService _countriesService;
+        private readonly ILogger<PersonsService> _logger;
 
 		//constructor
 		public PersonsService(bool initialize = true)
