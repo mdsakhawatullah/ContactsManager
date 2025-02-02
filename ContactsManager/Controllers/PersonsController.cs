@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ContactsManager.Filters.ActionFilters;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ServiceContracts;
 using ServiceContracts.DTO;
@@ -24,6 +25,7 @@ namespace ContactsManager.Controllers
 
         [Route("[action]")]
         [Route("/")]
+        [TypeFilter(typeof(PersonsListActionFilter))]
         public IActionResult Index(string searchBy, string? searchString,
                                    string sortBy = nameof(PersonResponse.PersonName),
                                    SortOrderOptions sortOrder = SortOrderOptions.ASC)
