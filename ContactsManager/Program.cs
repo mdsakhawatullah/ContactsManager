@@ -1,3 +1,4 @@
+using ContactsManager.StartupExtensions;
 using Entities;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -16,19 +17,8 @@ builder.Host.UseSerilog((HostBuilderContext context, IServiceProvider services, 
 
 });
 
+builder.Services.ConfigureServices(builder.Configuration);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-
-//add services
-builder.Services.AddScoped<ICountriesService, CountriesService>();
-builder.Services.AddScoped<IPersonsService, PersonsService>();
-
-//database
-builder.Services.AddDbContext<PersonsDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
 
 var app = builder.Build();
 
